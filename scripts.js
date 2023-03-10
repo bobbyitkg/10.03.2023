@@ -53,4 +53,16 @@ document.querySelector("#who").addEventListener("click", function () {
     });
 });
 
+fetch("https://api.nasa.gov/planetary/apod?api_key=CVchMF8gzOrACkdt38rfoy0KIbrB7w6IDrF2z3hF")
+  .then((response) => response.json())
+  .then((data) => {
+    const img = document.createElement("img");
+    img.src = data.url;
+    img.style.width = "300px";
+    img.alt = data.title;
+    img.title = data.explanation;
+    document.querySelector("#astro-photo").textContent = "";
+    document.querySelector("#astro-photo").appendChild(img);
+  });
+
 // Сегодня скоропечатание! 
